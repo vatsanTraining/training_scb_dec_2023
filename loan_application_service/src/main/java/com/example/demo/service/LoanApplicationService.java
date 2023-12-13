@@ -15,6 +15,7 @@ public class LoanApplicationService {
 	 private LoanApplicationRepository repo;
 
 	 //Repository is autowired here => Constructor DI
+	 
 	public LoanApplicationService(LoanApplicationRepository repo) {
 		super();
 		this.repo = repo;
