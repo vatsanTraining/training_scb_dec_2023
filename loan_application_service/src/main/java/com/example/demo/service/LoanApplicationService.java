@@ -30,6 +30,13 @@ public class LoanApplicationService {
 		return this.repo.findAll();
 	}
 	
+   public LoanApplication findById(int id){
+		
+		return this.repo.findById(id)
+				  .orElseThrow(() -> 
+				    new RuntimeException("Element with Id"+id+"Not Available"));
+	}
+	
 	public LoanApplication save(LoanApplication entity) {
 		return this.repo.save(entity);
 	}

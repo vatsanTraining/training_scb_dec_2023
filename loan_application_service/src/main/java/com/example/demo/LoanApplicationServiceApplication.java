@@ -30,7 +30,7 @@ public class LoanApplicationServiceApplication {
 			@Override
 			public void run(String... args) throws Exception {
 				
-				repo.save(new LoanApplication(1010, "Ramesh", 200000, "TNAB2010"));
+				repo.save(new LoanApplication(1011, "Suresh", 300000, "TNAB3010"));
 			}
 		};
 	}
