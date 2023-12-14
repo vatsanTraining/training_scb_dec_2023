@@ -14,20 +14,20 @@ import com.example.demo.entity.LoanApplication;
 import com.example.demo.service.LoanApplicationService;
 
 @RestController
-@RequestMapping(path = "/api/v1/loans")
-public class LoanApplicationController {
+@RequestMapping(path = "/api/v2/loans")
+public class XMLLoanApplicationController {
 
 	
 	private LoanApplicationService service;
 
 	// Constructor DI
-	public LoanApplicationController(LoanApplicationService service) {
+	public XMLLoanApplicationController(LoanApplicationService service) {
 		super();
 		this.service = service;
 	}
 	
 	
-	@GetMapping(produces = "application/json")
+	@GetMapping(produces = "application/xml")
 	public List<LoanApplication> findAll(){
 		
 		return this.service.findAll();
@@ -54,7 +54,7 @@ public class LoanApplicationController {
 	}
 	
 	
-	@PostMapping(consumes = "application/json")
+	@PostMapping(consumes = "application/xml")
 	public ResponseEntity<LoanApplication> save(@RequestBody LoanApplication entity){
 		
 		LoanApplication addedEntity = this.service.save(entity);
