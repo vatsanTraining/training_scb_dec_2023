@@ -48,6 +48,6 @@ public class LoanApplicationService {
 	
 	public List<LoanApplication> loanAmountGrtThan(double qryValue){
 		
-		return this.repo.getGrtThanLoanAmount(qryValue);
+		return this.repo.getLoanAmountGrtThan(qryValue);
 	}
 }
