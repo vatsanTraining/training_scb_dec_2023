@@ -41,4 +41,13 @@ public class LoanApplicationService {
 		return this.repo.save(entity);
 	}
 	
+	public List<LoanApplication> findByName(String qryString){
+		
+		return this.repo.findByApplicantName(qryString);
+	}
+	
+	public List<LoanApplication> loanAmountGrtThan(double qryValue){
+		
+		return this.repo.getGrtThanLoanAmount(qryValue);
+	}
 }
