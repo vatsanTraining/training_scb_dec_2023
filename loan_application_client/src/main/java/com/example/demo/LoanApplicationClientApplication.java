@@ -14,14 +14,23 @@ public class LoanApplicationClientApplication {
 
 	   RestTemplate template = ctx.getBean(RestTemplate.class);
 	   
-	    String response =template.getForObject("http://localhost:4040/api/v1/loans", String.class);
-	
-	    System.out.println(response);
+//	    String response =template.getForObject("http://localhost:4040/api/v1/loans", String.class);
+//	
+//	    System.out.println(response);
+	   
+	    LoanApplicationDto[] responses =
+	    		template.getForObject("http://localhost:4040/api/v1/loans", 
+	    				LoanApplicationDto[].class);
+		
+	    for(LoanApplicationDto eachElement : responses) {
+	    	
+	    	System.out.println(eachElement.getApplicantName() +","  +eachElement.getLoanAmount());
+	    }
 	}
 
 	
 	@Bean
-	public RestTemplate template() {
+    public RestTemplate template() {
 		
 		return new RestTemplate(); 
 	}
