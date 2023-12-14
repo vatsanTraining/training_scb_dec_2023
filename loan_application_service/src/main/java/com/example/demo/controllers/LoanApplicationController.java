@@ -39,6 +39,20 @@ public class LoanApplicationController {
 		return this.service.findById(id);
 	}
 	
+	@GetMapping(path = "/srch/name/{name}")
+	public List<LoanApplication> findByName(@PathVariable String name){
+		
+		return this.service.findByName(name);
+		
+	}
+	
+	@GetMapping(path = "/srch/amount/{amount}")
+	public List<LoanApplication> findByLoanAmountGrtThan(@PathVariable  double amount){
+		
+		return this.service.loanAmountGrtThan(amount);
+		
+	}
+	
 	
 	@PostMapping
 	public ResponseEntity<LoanApplication> save(@RequestBody LoanApplication entity){
