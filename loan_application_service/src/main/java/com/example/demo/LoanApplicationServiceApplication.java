@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.example.demo.entity.LoanApplication;
 import com.example.demo.repos.LoanApplicationRepository;
@@ -21,9 +22,14 @@ public class LoanApplicationServiceApplication {
 	}
 	
 	
+	@Bean
+	BCryptPasswordEncoder encoder() {
+		
+		return new BCryptPasswordEncoder();
+	}
 	
 	@Bean
-	public CommandLineRunner runner() {
+    CommandLineRunner runner() {
 		
 		return new CommandLineRunner() {
 			
