@@ -2,8 +2,10 @@ package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
@@ -26,12 +28,22 @@ public class LoanApplicationClientApplication {
 	    	
 	    	System.out.println(eachElement.getApplicantName() +","  +eachElement.getLoanAmount());
 	    }
+	    
+		String response = template.getForObject("http://localhost:5050/api/v1/scores/"+"TNAB2010", String.class);
+
+		System.out.println(response);
 	}
 
 	
 	@Bean
     public RestTemplate template() {
 		
-		return new RestTemplate(); 
+		RestTemplateBuilder builder=new RestTemplateBuilder().basicAuthentication("india", "india");
+		
+		 return builder.build();
 	}
+	
+	
+	
+
 }
