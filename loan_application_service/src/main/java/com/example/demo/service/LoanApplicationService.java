@@ -50,4 +50,11 @@ public class LoanApplicationService {
 		
 		return this.repo.getLoanAmountGrtThan(qryValue);
 	}
+	
+    public void delete(int id) {
+        LoanApplication entity = repo.findById(id).orElseThrow(() -> new RuntimeException("Element with "+id + "Not Found"));
+      
+         repo.delete(entity);
+    }
+
 }
