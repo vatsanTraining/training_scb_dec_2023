@@ -3,6 +3,7 @@ package com.example.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
@@ -21,7 +22,7 @@ public class LoanApplicationClientApplication {
 //	    System.out.println(response);
 	   
 	    LoanApplicationDto[] responses =
-	    		template.getForObject("http://localhost:4040/api/v1/loans", 
+	    		template.getForObject("http://LOAN-APPLICATION-SERVICE/api/v1/loans", 
 	    				LoanApplicationDto[].class);
 		
 	    for(LoanApplicationDto eachElement : responses) {
@@ -29,16 +30,18 @@ public class LoanApplicationClientApplication {
 	    	System.out.println(eachElement.getApplicantName() +","  +eachElement.getLoanAmount());
 	    }
 	    
-		String response = template.getForObject("http://localhost:5050/api/v1/scores/"+"TNAB2010", String.class);
+		String response = template.getForObject("http://CIBIL-SCORE-SERVICE/api/v1/scores/"+"TNAB2010", String.class);
 
 		System.out.println(response);
 	}
 
 	
 	@Bean
+	@LoadBalanced
     public RestTemplate template() {
 		
-		RestTemplateBuilder builder=new RestTemplateBuilder().basicAuthentication("india", "india");
+		RestTemplateBuilder builder=new RestTemplateBuilder()
+				      .basicAuthentication("india", "india");
 		
 		 return builder.build();
 	}

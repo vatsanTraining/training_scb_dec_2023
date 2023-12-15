@@ -8,7 +8,10 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update 
+  application:
+    name: cibil-score-service
     
 
 server:
   port: 5050    
+  

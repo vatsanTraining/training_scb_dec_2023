@@ -1,0 +1,6 @@
+server:
+  port: 4045
+
+spring:
+  application:
+    name: client-service
