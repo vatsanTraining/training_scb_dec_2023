@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.client.RestTemplate;
 
 import com.example.demo.entity.LoanApplication;
 import com.example.demo.repos.LoanApplicationRepository;
@@ -21,6 +22,11 @@ public class LoanApplicationServiceApplication {
 		SpringApplication.run(LoanApplicationServiceApplication.class, args);
 	}
 	
+	@Bean
+    public RestTemplate template() {
+		
+		return new RestTemplate(); 
+	}
 	
 	@Bean
 	BCryptPasswordEncoder encoder() {
