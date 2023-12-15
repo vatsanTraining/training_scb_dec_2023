@@ -21,11 +21,10 @@ public class ChainController {
 		this.template = template;
 	}
 	
-	
-	@GetMapping("/{pan}")
+	@GetMapping(path="/{pan}",produces = "application/json")
 	public ResponseEntity<String> getScore(@PathVariable("pan") String pan){
 		
-		String response = template.getForObject("http://localhost:5050/scores/"+pan, String.class);
+		String response = template.getForObject("http://localhost:5050/api/v1/scores/"+pan, String.class);
 		
 		return ResponseEntity.ok(response);
 	}

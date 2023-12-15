@@ -27,7 +27,7 @@ public class SecurityConfig {
 	 SecurityFilterChain filerChain(HttpSecurity http) throws Throwable{
 		
 		
-		http.authorizeHttpRequests(auth -> auth.requestMatchers("/api/v2/loans/**").permitAll());
+		http.authorizeHttpRequests(auth -> auth.requestMatchers("/api/v2/loans/**","/api/v1/process/**").permitAll());
 		
 		http.authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/loans/**")
 				    .authenticated()).httpBasic(withDefaults());
